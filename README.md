@@ -41,18 +41,29 @@ Kinetic-GAN에서는 Global Pooling을 진행할 때, average pooling을 사용�
 DCGAN에서 안정성을 높이기 위해 제안되는 방법 중 방법 중, Discriminator의 input에 noise를 넣는 방식을 시도해보았다. 코드를 수정하여 Discriminator가 downsampling을 진행할 때, 동일한 가우시안 노이즈를 주입하는 방식으로 실험을 진행했다.
 
 <h5> 3) Discriminator의 label smoothing </h5>
-2)에서 언급한 DCGAN의 안정성을 높이는 방법 중 또다른 하나는 label smoothing을 진행하는 것이다. 이는 Discriminator의 label에 noise를 넣어 label smoothing을 진행하는 것이다.
+2)에서 언급한 DCGAN의 안정성을 높이는 방법 중 또다른 하나는 label smoothing을 진행하는 것이다. 이는 Discriminator의 label에 noise를 넣어 label smoothing을 진행하는 것이다. 해당 GAN 모델에서는 Label이 HardCoding 방식이 아닌 Embedding 방식을 사용하기에, Embedding에 노이즈를 추가하여 실험을 진행하였다.
 
 <h5> 4) Stochastic Variation의 응용 </h5>
 
 ![stochastic](./images/stochastic.png)
 
-위 사진은 기존 Kinetic-GAN의 논문에서 제시한 Stochastic Variation을 진행했을 때의 결과이다. joint마다 noise를 주입했을 때, 손가락이나 역동적인 동작이 이루어지는 곳에서 표준편차가 크게 나타난 것을 확인할 수 있다. 이를 통해 노이즈를 주입했을 때 다른 곳에 비해 더 많은 변화가 일어난 곳을 확인하여, 해당 부분에 노이즈를 추가로 주입하여 Data Augmentation의 효과를 유도할 수 있을 것이라고 기대하였다.
+위 사진은 기존 Kinetic-GAN의 논문에서 제시한 Stochastic Variation을 진행했을 때의 결과이다. joint마다 noise를 주입했을 때, 손가락이나 역동적인 동작이 이루어지는 곳에서 표준편차가 크게 나타난 것을 확인할 수 있다. 이를 통해 노이즈를 주입했을 때 다른 곳에 비해 더 많은 변화가 일어난 곳을 확인하여, 해당 부분에 Quntile Masking을 통해 노이즈를 추가로 주입하여 Data Augmentation의 효과를 유도할 수 있을 것이라고 기대하였다.
 
 
 <h3> 4. Result </h3>
 먼저 epoch의 수를 20으로 줄이고, epoch의 수를 감소시켰을 때 생성된 모델의 FID와 MMD 값을 측정하여 해당 값을 기준(baseline)으로 삼았다. 실험은 NTU RGB+D 데이터의 xsub, xview 벤치마크에 모두 적용하였다. 
 
+- Cross-Subject
+|Method|FID|MMDa|MMDs|
+|------|---|---|---|
+|Baseline|345.069|1.224|1.038|
+|------|---|---|---|
+|(A) Discriminator global max pooling|**315.459**|**1.193**|**1.029**|
+|(B) + Discriminator input noise|369.010|**1.109**|**0.985**|
+|(C) + Discriminator label smoothing|423.534|1.276|1.117|
+|(D) No Discriminator noise + Generator Quantile Masking|350.439|**1.171**|**0.0996**|
+
+- Cross-View
 <h3> 5. Conclusion </h3>
 GAN에서 성능 향상 및 안정성 기여를 위해 사용하는 기법들 중 몇 가지를 Kinetic-GAN에 적용해봤다. 그 중 몇가지는 실제로 성능 향상을 이루었으며, 몇 가지는 일부분 향상, 몇 가지는 아예 성능 하락이 이루어진 것을 확인할 수 있었다. 이러한 점은 epoch의 횟수를 늘리거나, 혹은 다른 방법으로의 접근이 필요해보인다.
 

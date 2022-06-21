@@ -54,17 +54,24 @@ DCGAN에서 안정성을 높이기 위해 제안되는 방법 중 방법 중, Di
 먼저 epoch의 수를 20으로 줄이고, epoch의 수를 감소시켰을 때 생성된 모델의 FID와 MMD 값을 측정하여 해당 값을 기준(baseline)으로 삼았다. 실험은 NTU RGB+D 데이터의 xsub, xview 벤치마크에 모두 적용하였다. 
 
 - Cross-Subject
-- 
+
 |Method|FID|MMDa|MMDs|
 |------|---|---|---|
 |Baseline|345.069|1.224|1.038|
-|------|---|---|---|
 |(A) Discriminator global max pooling|**315.459**|**1.193**|**1.029**|
 |(B) + Discriminator input noise|369.010|**1.109**|**0.985**|
 |(C) + Discriminator label smoothing|423.534|1.276|1.117|
 |(D) No Discriminator noise + Generator Quantile Masking|350.439|**1.171**|**0.0996**|
 
 - Cross-View
+
+|Method|FID|MMDa|MMDs|
+|------|---|---|---|
+|Baseline|81.999|0.851|0.918|
+|(A) Discriminator global max pooling|**65.664**|**0.828**|**0.900**|
+|(B) + Discriminator input noise|**53.829**|0.870|0.937|
+|(C) + Discriminator label smoothing|278.753|1.181|1.162|
+|(D) No Discriminator noise + Generator Quantile Masking|388.057|1.084|0.920|
 
 
 <h3> 5. Conclusion </h3>

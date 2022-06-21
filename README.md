@@ -48,3 +48,16 @@ DCGAN에서 안정성을 높이기 위해 제안되는 방법 중 방법 중, Di
 ![stochastic](./images/stochastic.png)
 
 위 사진은 기존 Kinetic-GAN의 논문에서 제시한 Stochastic Variation을 진행했을 때의 결과이다. joint마다 noise를 주입했을 때, 손가락이나 역동적인 동작이 이루어지는 곳에서 표준편차가 크게 나타난 것을 확인할 수 있다. 이를 통해 노이즈를 주입했을 때 다른 곳에 비해 더 많은 변화가 일어난 곳을 확인하여, 해당 부분에 노이즈를 추가로 주입하여 Data Augmentation의 효과를 유도할 수 있을 것이라고 기대하였다.
+
+
+<h3> 4. Result </h3>
+먼저 epoch의 수를 20으로 줄이고, epoch의 수를 감소시켰을 때 생성된 모델의 FID와 MMD 값을 측정하여 해당 값을 기준(baseline)으로 삼았다. 실험은 NTU RGB+D 데이터의 xsub, xview 벤치마크에 모두 적용하였다. 
+
+<h3> 5. Conclusion </h3>
+GAN에서 성능 향상 및 안정성 기여를 위해 사용하는 기법들 중 몇 가지를 Kinetic-GAN에 적용해봤다. 그 중 몇가지는 실제로 성능 향상을 이루었으며, 몇 가지는 일부분 향상, 몇 가지는 아예 성능 하락이 이루어진 것을 확인할 수 있었다. 이러한 점은 epoch의 횟수를 늘리거나, 혹은 다른 방법으로의 접근이 필요해보인다.
+
+
+<h3> Reference </h3>
+[1] Bruno Degardin, Generative Adversarial Graph Convolutional Networks for Human Action Synthesis, arXiv preprint arXiv:2110.11191, 2021
+[2] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Horchreiter, Gans trained by a two time-scale update rule converge to a local nash equilibrium, arXiv preprint arXiv:1706.08500, 2017.
+[3] Alec Radford, Luke Metz, and Soumith Chintala, Unsupervised Representation Learning with Deep Convolutional Generative Adversial Networks, arXiv preprint arXiv:1511.06434, 201

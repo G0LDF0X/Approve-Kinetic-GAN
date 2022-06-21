@@ -7,7 +7,8 @@
 
 <h3> 2. Dataset </h3>
 - NTU RGB + D
-- 
+
+
 ![actionRecognition120](./images/actionRecognition120.jpg)]
 
 - 60 action classes
@@ -18,4 +19,10 @@
 dataset 출처 : https://rose1.ntu.edu.sg/dataset/actionRecognition/
 
 데이터의 크기가 GitHub에 업로드하기에는 너무 큰 관계로, 데이터를 다운받을 수 있는 외부 링크를 연결합니다.
+
 다운로드 링크 : http://socia-lab.di.ubi.pt/~bruno/kinetic-gan/datasets/NTU/ntu.zip
+
+<h3> 3. Model </h3>
+Kinetic-GAN 코드 : https://github.com/DegardinBruno/Kinetic-GAN
+위 링크에서 제공하는 Kinetic-GAN의 일부 코드를 수정하여 사용하였으며, cross-subject에 관해서는 kinetic-gan-mlp4의 Config를 적용한 모델을, cross-view에서는 kinetic-gan-mlp6의 Config를 적용한 모델을 사용하였다.
+

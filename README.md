@@ -54,6 +54,7 @@ DCGAN에서 안정성을 높이기 위해 제안되는 방법 중 방법 중, Di
 먼저 epoch의 수를 20으로 줄이고, epoch의 수를 감소시켰을 때 생성된 모델의 FID와 MMD 값을 측정하여 해당 값을 기준(baseline)으로 삼았다. 실험은 NTU RGB+D 데이터의 xsub, xview 벤치마크에 모두 적용하였다. 
 
 - Cross-Subject
+- 
 |Method|FID|MMDa|MMDs|
 |------|---|---|---|
 |Baseline|345.069|1.224|1.038|
@@ -64,6 +65,8 @@ DCGAN에서 안정성을 높이기 위해 제안되는 방법 중 방법 중, Di
 |(D) No Discriminator noise + Generator Quantile Masking|350.439|**1.171**|**0.0996**|
 
 - Cross-View
+
+
 <h3> 5. Conclusion </h3>
 GAN에서 성능 향상 및 안정성 기여를 위해 사용하는 기법들 중 몇 가지를 Kinetic-GAN에 적용해봤다. 그 중 몇가지는 실제로 성능 향상을 이루었으며, 몇 가지는 일부분 향상, 몇 가지는 아예 성능 하락이 이루어진 것을 확인할 수 있었다. 이러한 점은 epoch의 횟수를 늘리거나, 혹은 다른 방법으로의 접근이 필요해보인다.
 

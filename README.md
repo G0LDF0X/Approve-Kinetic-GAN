@@ -5,6 +5,7 @@
 <h3> 1. Overview </h3>
 최근 딥러닝이 대두되는 가운데 사람의 행동 인식 및 행동 생성 또한 딥러닝을 통한 연구가 진행되고  있다. 특히 행동 인식보다는 행동 생성 분야에 대해서 어려운 과제들이 부여되고 있는데, ‘익숙한 자연 풍경’을 만드는 것은 쉽지만 ‘익숙한 사람의 얼굴’을 만드는 것은 어렵다. 자연 풍경보다 사람의 얼굴을 우리가 더 자주 보며, 얼굴로 사람을 인식하기 때문이다. 비슷하게, ‘익숙한 사람의 행동’을 만드는 것도 어려운 과제다. 하지만 해당 분야의 연구가 좀 더 진행된다면 영화나 그래픽 분야에서 CG 등을 통해 조연이나 캐릭터들이 더 자연스러운 행동을 취할 수 있도록 만들 수 있고, 다양한 곳에서도 활용할 수 있을 것이다.
 
+
 <h3> 2. Dataset </h3>
 - NTU RGB + D
 
@@ -26,6 +27,7 @@ dataset 출처 : https://rose1.ntu.edu.sg/dataset/actionRecognition/
 
 <h3> 3. Model </h3>
 Kinetic-GAN 코드 : https://github.com/DegardinBruno/Kinetic-GAN
+
 위 링크에서 제공하는 Kinetic-GAN의 일부 코드를 수정하여 사용하였으며, cross-subject에 관해서는 kinetic-gan-mlp4의 Config를 적용한 모델을, cross-view에서는 kinetic-gan-mlp6의 Config를 적용한 모델을 사용하였다.
 
 ![kinetic-gan](./images/kinetic-gan.png)
@@ -52,6 +54,7 @@ DCGAN에서 안정성을 높이기 위해 제안되는 방법 중 방법 중, Di
 
 <h3> 4. Result </h3>
 먼저 epoch의 수를 20으로 줄이고, epoch의 수를 감소시켰을 때 생성된 모델의 FID와 MMD 값을 측정하여 해당 값을 기준(baseline)으로 삼았다. 실험은 NTU RGB+D 데이터의 xsub, xview 벤치마크에 모두 적용하였다. 
+
 
 - Cross-Subject
 
@@ -80,5 +83,7 @@ GAN에서 성능 향상 및 안정성 기여를 위해 사용하는 기법들 �
 
 <h3> Reference </h3>
 [1] Bruno Degardin, Generative Adversarial Graph Convolutional Networks for Human Action Synthesis, arXiv preprint arXiv:2110.11191, 2021
+
 [2] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Horchreiter, Gans trained by a two time-scale update rule converge to a local nash equilibrium, arXiv preprint arXiv:1706.08500, 2017.
+
 [3] Alec Radford, Luke Metz, and Soumith Chintala, Unsupervised Representation Learning with Deep Convolutional Generative Adversial Networks, arXiv preprint arXiv:1511.06434, 201

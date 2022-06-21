@@ -7,5 +7,13 @@
 
 <h3> 2. Dataset </h3>
 * NTU RGB + D
-* 3D skeletons (body joints)
-* 
+![dataset](./images/actionRecognition120.jpg)]
+
+- 60 action classes
+- Benchmark : 1) Cross-Subject
+-             2) Corss-View
+
+dataset 출처 : https://rose1.ntu.edu.sg/dataset/actionRecognition/
+
+데이터의 크기가 GitHub에 업로드하기에는 너무 큰 관계로, 데이터를 다운받을 수 있는 외부 링크를 연결합니다.
+다운로드 링크 : http://socia-lab.di.ubi.pt/~bruno/kinetic-gan/datasets/NTU/ntu.zip
